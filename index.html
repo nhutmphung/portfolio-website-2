@@ -3,38 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nhut Phung</title>
 
-  <title>Nhut Phung | Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- LINK YOUR CSS (THIS WAS MISSING) -->
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <div class="background"></div>
+<body class="dark">
 
-  <main class="container">
-    <div class="card profile-card">
-      <img src="avatar.png" class="avatar" alt="Profile picture" />
-      <h1>Nhut Phung</h1>
-      <p class="subtitle">EE Student & Developer</p>
-      <div class="socials">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
+<!-- TOP TERMINAL NAV -->
+<header class="top-terminal">
+  <span class="prompt">&gt; </span>
+  <span id="top-typing"></span>
+  <span class="cursor">█</span>
+</header>
+  
 
-    <div class="card content-card">
-      <h2>Slice of Me</h2>
-      <p>
-        I’m an electrical engineering student interested in embedded systems,
-        power, and building cool hardware projects.
-      </p>
-      <img src="project.jpg" class="content-image" alt="Project preview" />
-    </div>
+  
+
+  <!-- MAIN CONTENT -->
+  <main class="container fade" id="content">
+
+    <section class="card left-card" id="left-card">
+      <!-- Filled by JS -->
+    </section>
+
+    <section class="card right-card" id="right-card">
+      <!-- Filled by JS -->
+    </section>
+
   </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="dock">
+    <button data-view="home">🏠</button>
+    <button data-view="experience">💼</button>
+    <button data-view="projects">🛠</button>
+    <button id="theme-toggle">☀️</button>
+  </nav>
+
+  <script src="script.js"></script>
 </body>
 </html>
