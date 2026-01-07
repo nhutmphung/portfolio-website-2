@@ -5,6 +5,59 @@
   box-sizing: border-box;
 }
 
+/* SOCIAL & TEXT STYLING */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  color: var(--text);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.social-links a:hover {
+  opacity: 0.7;
+}
+
+.greeting {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.name {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-top: -5px;
+}
+
+.role {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.location {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location i {
+  font-size: 0.8rem;
+}
+
 /* THEMES */
 body.dark {
   --bg: #0b0f0e;
@@ -68,22 +121,115 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 16px;
+  gap: 12px; /* Slightly tighter gap looks better when they expand */
+  padding: 10px;
+  background: rgba(20, 26, 24, 0.5); /* Optional: semi-transparent backing */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: flex-end; /* Keeps them aligned at the bottom as they grow */
 }
 
 .dock button {
   background: var(--card);
   border: none;
   border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 1.2rem;
+  padding: 12px;
+  font-size: 1.5rem; /* Base size */
   cursor: pointer;
   color: var(--text);
+  
+  /* The Magic: Transition makes it smooth */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+  transform-origin: bottom; /* Grows upward instead of from the center */
 }
 
-
+/* Hover Effect */
 .dock button:hover {
+  transform: scale(1.4); /* Makes it 40% bigger */
+  background: #2a3331; /* Subtle highlight */
+  z-index: 10;
+}
+
+/* Optional: Shrink neighbors slightly (Advanced CSS-only trick) */
+.dock:hover button:not(:hover) {
+  transform: scale(0.9);
   opacity: 0.8;
+}
+
+/* Container for the side-by-side layout */
+.exp-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* The Card */
+.exp-card {
+  background-color: #1a1c1e; /* Deep charcoal matching the example */
+  border: 1px solid #2d2f31;
+  border-radius: 20px;
+  padding: 30px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+  font-family: 'Courier New', Courier, monospace; /* Essential for the 'code' look */
+}
+
+/* Logo Styling */
+.company-logo {
+  height: 30px;
+  width: auto;
+  align-self: flex-start;
+  margin-bottom: 25px;
+  filter: grayscale(1) brightness(1.5); /* Makes logos blend with the dark theme */
+}
+
+/* Typography */
+.company-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+}
+
+.job-role {
+  font-size: 1.1rem;
+  font-weight: normal;
+  color: #b0b0b0;
+  margin-bottom: 8px;
+}
+
+.date-range {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Pill Tags */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.exp-tag {
+  background: #2a2d30;
+  color: #d1d1d1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  border: 1px solid #3d4043;
+}
+
+/* Description text */
+.exp-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin-top: 10px;
 }
 
 /* TOP TERMINAL HEADER */
