@@ -4,29 +4,35 @@ const container = document.getElementById("content");
 
 /* CONTENT DEFINITIONS */
 const views = {
-  home: {
-left: `
-      <div class="profile-header">
-        <div class="social-links">
-          <a href="https://github.com/nhutmphung" target="_blank"><i class="fa-brands fa-github"></i></a>
-          <a href="https://linkedin.com/in/nhut-phung/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-        <p class="greeting">Hey, I'm</p>
-        <h2 class="name">Nhut Phung</h2>
-        <p class="role">Electrical Engineering Student & Creator</p>
-        <p class="location">
-          <i class="fa-solid fa-location-dot"></i> Texas, United States
-        </p>
+home: {
+  left: `
+    <div class="profile-top">
+      <div class="social-links">
+        <a href="https://github.com/yourusername" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
       </div>
-    `,
-    right: `
-      <h3>Slice of Me</h3>
-      <p>
-        I'm an electrical engineering student interested in embedded systems,
-        hardware, and building cool and fun projects!
+      <div class="headshot-container">
+        <img src="images/avatar.png" alt="Nhut Phung">
+      </div>
+    </div>
+    
+    <div class="profile-info">
+      <p class="greeting">Hey, I'm</p>
+      <h2 class="name">Nhut Phung</h2>
+      <p class="role">Electrical Engineering Student & Creator</p>
+      <p class="location">
+        <i class="fa-solid fa-location-dot"></i> Texas, United States
       </p>
-    `
-  },
+    </div>
+  `,
+  right: `
+    <h3>Slice of Me</h3>
+    <p>
+      I'm an electrical engineering student interested in embedded systems,
+      hardware, and building cool and fun projects!
+    </p>
+  `
+},
 
 experience: {
   left: `
@@ -66,22 +72,42 @@ experience: {
   `
 },
 
-  projects: {
-    left: `
-      <h3>Projects</h3>
-      <ul>
-        <li>ESP32 Web Server</li>
-        <li>Arduino Air Purifier</li>
-        <li>Wireless RC Car</li>
-      </ul>
-    `,
-    right: `
-      <p>
-        My projects focus on bridging software and hardware through embedded
-        systems and practical engineering solutions.
-      </p>
-    `
-  }
+projects: {
+
+  right: `
+    <div class="project-grid"> <div class="exp-card project-card">
+        <div class="project-img-container">
+          <img src="images/NandPCB.png" alt="PCB Visualizer" class="project-thumbnail">
+        </div>
+        <h4 class="company-name">Nand2Tetris</h4>
+        <h5 class="job-role">Digital Logic PCB</h5>
+        <div class="tag-container">
+          <span class="exp-tag">Altium</span>
+          <span class="exp-tag">KiCad 8.0</span>
+          <span class="exp-tag">HDL</span>
+        </div>
+        <p class="exp-description">Visualized digital logic gates onto PCB.</p>
+        <button class="project-btn">See Project</button>
+      </div>
+
+      <div class="exp-card project-card">
+        <div class="project-img-container">
+          <img src="images/plantStudyBuddy.png" alt="Plant AI" class="project-thumbnail">
+        </div>
+        <h4 class="company-name">Plant AI</h4>
+        <h5 class="job-role">Study Buddy</h5>
+        <div class="tag-container">
+          <span class="exp-tag">ESP32-S3</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">RESTful API</span>
+          <span class="exp-tag">C++</span>
+        </div>
+        <p class="exp-description">Developed an AI assistant using I2C on an ESP32-S3 to process sensor data.</p>
+        <button class="project-btn">See Project</button>
+      </div>
+    </div>
+  `
+}
 };
 
 /* TOP TERMINAL TYPING */
@@ -113,21 +139,28 @@ function typeHeader(text) {
 }
 
 
-/* VIEW SWITCHING */
 function switchView(view) {
   container.classList.add("hidden");
 
   setTimeout(() => {
-    left.innerHTML = views[view].left;
-    right.innerHTML = views[view].right;
-    container.classList.remove("hidden");
+    // Check if projects view is selected
+    if (view === 'projects') {
+      container.classList.add("project-view");
+    } else {
+      container.classList.remove("project-view");
+    }
 
-    /* Trigger header typing */
+    // Fix: Only set innerHTML if the property exists, otherwise set to empty string
+    left.innerHTML = views[view].left || ""; 
+    right.innerHTML = views[view].right || "";
+
+    // Fix: Hide the left card entirely if there is no content for it
+    left.style.display = views[view].left ? "block" : "none";
+
+    container.classList.remove("hidden");
     typeHeader(viewTitles[view]);
   }, 300);
 }
-
-
 /* NAV BUTTONS */
 document.querySelectorAll("[data-view]").forEach(btn => {
   btn.addEventListener("click", () => {
