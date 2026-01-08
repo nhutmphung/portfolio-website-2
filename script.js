@@ -8,8 +8,8 @@ home: {
   left: `
     <div class="profile-top">
       <div class="social-links">
-        <a href="https://github.com/yourusername" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/nhutmphung" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/nhut-phung" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
       </div>
       <div class="headshot-container">
         <img src="images/avatar.png" alt="Nhut Phung">
@@ -19,7 +19,7 @@ home: {
     <div class="profile-info">
       <p class="greeting">Hey, I'm</p>
       <h2 class="name">Nhut Phung</h2>
-      <p class="role">Electrical Engineering Student & Creator</p>
+      <p class="role">Electrical Engineering Student</p>
       <p class="location">
         <i class="fa-solid fa-location-dot"></i> Texas, United States
       </p>
@@ -73,9 +73,10 @@ experience: {
 },
 
 projects: {
-
+  left: "", // Keeping this empty as per your current logic
   right: `
-    <div class="project-grid"> <div class="exp-card project-card">
+    <div class="project-grid"> 
+      <div class="exp-card project-card">
         <div class="project-img-container">
           <img src="images/NandPCB.png" alt="PCB Visualizer" class="project-thumbnail">
         </div>
@@ -92,6 +93,37 @@ projects: {
 
       <div class="exp-card project-card">
         <div class="project-img-container">
+          <img src="images/discordJobBot.png" alt="Jobright Bot Tracker" class="project-thumbnail">
+        </div>
+        <h4 class="company-name">Jobright.Ai</h4>
+        <h5 class="job-role">Discord job bot</h5>
+        <div class="tag-container">
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Raspian</span>
+          <span class="exp-tag">Raspberry Pi</span>
+        </div>
+        <p class="exp-description">Created job bot alert.</p>
+        <button class="project-btn">See Project</button>
+      </div>
+
+      <div class="exp-card project-card">
+        <div class="project-img-container">
+          <img src="images/discordJobBot.png" alt="Jobright Bot Tracker" class="project-thumbnail">
+        </div>
+        <h4 class="company-name">Jobright.Ai</h4>
+        <h5 class="job-role">Discord job bot</h5>
+        <div class="tag-container">
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Raspian</span>
+          <span class="exp-tag">Raspberry Pi</span>
+        </div>
+        <p class="exp-description">Created job bot alert.</p>
+        <button class="project-btn">See Project</button>
+      </div>       
+
+
+      <div class="exp-card project-card">
+        <div class="project-img-container">
           <img src="images/plantStudyBuddy.png" alt="Plant AI" class="project-thumbnail">
         </div>
         <h4 class="company-name">Plant AI</h4>
@@ -102,7 +134,7 @@ projects: {
           <span class="exp-tag">RESTful API</span>
           <span class="exp-tag">C++</span>
         </div>
-        <p class="exp-description">Developed an AI assistant using I2C on an ESP32-S3 to process sensor data.</p>
+        <p class="exp-description">Developed an AI assistant using ESP32-S3.</p>
         <button class="project-btn">See Project</button>
       </div>
     </div>

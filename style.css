@@ -5,14 +5,43 @@
   box-sizing: border-box;
 }
 
-/* Update the left card to be wider */
-.left-card {
-  width: 450px; /* Increased from 320px */
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: none;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
+
+
+.left-card {
+  width: 520px;
+  min-height: 340px;
+}
+
+.right-card {
+  width: 520px;
+  max-width: none;
+  opacity: 0.95;
+}
+
+.container.about-view {
+  max-width: 1400px;
+}
+
+.right-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.right-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+
+
 
 /* Headshot Styling */
 .profile-top {
@@ -52,17 +81,61 @@
 }
 
 
-/* Project Specific Overrides */
-/* Update the existing .exp-grid or create a specific one for projects */
-.project-grid {
+
+/* 
+===============================================================================
+
+# PROJECTS SECTION #
+
+===============================================================================
+
+*/
+
+/* This ensures that on the project page, the container expands and aligns left */
+.container.project-view {
+  max-width: 1400px; /* Room for 3 cards + your sidebar */
+  justify-content: flex-start; /* Start from the left */
+  align-items: flex-start; /* Align to the top */
+  padding-top: 100px; /* Space for the terminal header */
+  gap: 20px;
+}
+
+/* Force the right card area to be invisible and wide on projects page */
+.container.project-view .right-card {
+  width: auto;
+  max-width: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0;
+}
+
+/* Ensure the grid fills up from the left */
+.container.project-view .project-grid {
   display: grid;
-  /* Limit to 2 columns to keep it centered and tidy */
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 24px;
-  /* This ensures the cards only take up the middle half of the right-side area */
-  max-width: 700px; 
-  margin: 0 auto; 
-  padding: 20px;
+  /* Fixed width cards so they fill up 1, 2, then 3 from left to right */
+  grid-template-columns: repeat(4, 300px); 
+  gap: 20px;
+  justify-content: flex-start; 
+}
+
+/* Optional: Staggered Fade-in Animation for "Slowly Filling Up" */
+.project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fillIn 0.5s ease forwards;
+}
+
+/* Delays to make them appear one by one */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.3s; }
+.project-card:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes fillIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -220,7 +293,14 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
-/* FADE ANIMATION */
+/* 
+===============================================================================
+
+# FADE ANIMATION #
+
+===============================================================================
+
+*/
 .fade {
   opacity: 1;
   transform: translateY(0);
@@ -232,7 +312,15 @@ body {
   transform: translateY(20px);
 }
 
-/* BOTTOM DOCK */
+/* 
+===============================================================================
+
+#B BOTTOM DOCK #
+
+===============================================================================
+
+*/
+
 .dock {
   position: fixed;
   bottom: 24px;
@@ -275,26 +363,14 @@ body {
   opacity: 0.8;
 }
 
-/* Container for the side-by-side layout */
-.exp-grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
+/* 
+===============================================================================
 
-/* The Card */
-.exp-card {
-  background-color: #1a1c1e; /* Deep charcoal matching the example */
-  border: 1px solid #2d2f31;
-  border-radius: 20px;
-  padding: 30px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  color: #e0e0e0;
-  font-family: 'Courier New', Courier, monospace; /* Essential for the 'code' look */
-}
+# WORK EXPERIENCE SECTION#
 
+===============================================================================
+
+*/
 /* Logo Styling */
 .company-logo {
   height: 30px;
@@ -333,12 +409,32 @@ body {
   margin-bottom: 20px;
 }
 
+/* Container for the side-by-side layout */
+.exp-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* The Card */
+.exp-card {
+  background-color: #1a1c1e; /* Deep charcoal matching the example */
+  border: 1px solid #2d2f31;
+  border-radius: 20px;
+  padding: 30px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+  font-family: 'Courier New', Courier, monospace; /* Essential for the 'code' look */
+}
+
 .exp-tag {
   background: #2a2d30;
   color: #d1d1d1;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: .75rem;
   border: 1px solid #3d4043;
 }
 
@@ -353,10 +449,10 @@ body {
 /* TOP TERMINAL HEADER */
 .top-terminal {
   position: absolute;
-  top: 32px;
+  top: 30px;
   width: 100%;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   letter-spacing: 0.5px;
   pointer-events: none; /* purely visual */
 }
